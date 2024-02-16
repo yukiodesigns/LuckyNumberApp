@@ -1,5 +1,6 @@
 package com.example.luckynumber
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,5 +15,15 @@ class MainActivity : AppCompatActivity() {
         val b1 = findViewById<Button>(R.id.btn)
         val txt = findViewById<TextView>(R.id.textView)
         val editTxt = findViewById<EditText>(R.id.editText)
+
+        //Passing Data with Explicit
+        b1.setOnClickListener(){
+            var username = editTxt.text
+
+            var i :Intent = Intent(this, LuckyNumberActivity::class.java)
+            //Pass data
+            i.putExtra("name", username)
+            startActivity(i)
+        }
     }
 }
