@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import kotlin.random.Random
 
 class LuckyNumberActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +19,19 @@ class LuckyNumberActivity : AppCompatActivity() {
         //Receive via function
         var user_name = receiveUser()
         Toast.makeText(this, "" + user_name, Toast.LENGTH_LONG).show()
+
+        var random_num = randomNum()
+        luck.setText(""+random_num)
     }
 
     fun receiveUser():String{
         var bundle:Bundle? = intent.extras
         var username = bundle?.get("name").toString()
         return username
+    }
+
+    fun randomNum():Int{
+        val random = Random.nextInt(1000)
+        return random
     }
 }
